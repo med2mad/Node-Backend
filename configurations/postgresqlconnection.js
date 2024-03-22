@@ -8,9 +8,7 @@ const {Client}= require('pg');
 //   database: "test"
 // })
 
-const pool = new Client({
-  connectionString: "postgres://default:R4bGpkZPsME3@ep-rapid-tree-a41dnde4-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require" ,
-})
+const pool = new Client({connectionString : process.env.POSTGRES_URL})
 
 // const { Pool } = require('pg');
 // const pool = new Pool({

@@ -1,6 +1,6 @@
 const {app} = require('./configurations/expressapp');
 
-///////////////////////auth///////////////////////////
+///////////////////////auth (5010)///////////////////////////
 const authRouter = require('./auth/router');
 app.use(authRouter);
 
@@ -16,7 +16,7 @@ app.use('/mongoose', mongooseRouter);
 const postgresqlRouter = require('./routers/postgresql');
 app.use('/postgresql', postgresqlRouter);
 
-////////////////////404///////////////////////////////y
+////////////////////404///////////////////////////////
 app.use((req, res)=>{
     res.status(404).json("404 , no routes !!");
 });
