@@ -6,7 +6,7 @@ const responseTime = require('response-time');
 
 const app = express();
 
-app.use(cors({exposedHeaders: '*'}));//cors + access x-response-time header
+app.use(cors({origin:'*', exposedHeaders: '*'}));//cors + access x-response-time header
 app.use(responseTime({suffix:false}));//add x-response-time to response headers
 
 app.use(express.json());
