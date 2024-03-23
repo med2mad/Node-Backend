@@ -28,11 +28,9 @@ const con = mysql.createConnection({
 
 con.connect((err) => {
   if (err){console.error("Mysyql initial connection error");}
-  else{app.listen(5010, ()=>{
-    console.log("Mysyql: " + 5010);
+  else{
+    app.listen(5010, ()=>{console.log("Mysyql: " + 5010);
     
-    
-
     // con.query("SELECT * FROM profiles", (err, rows)=>{
     //   console.log(rows)
     // })
@@ -41,9 +39,8 @@ con.connect((err) => {
     // con.query("INSERT INTO profiles (name, age, photo) VALUES ('mohamed', 35, 'whatsapp.jpg');", (err, rows)=>{
     //   console.log(rows)
     // })
-    
-    
-  });}
+  });
+}
 });
 
 module.exports = con;
