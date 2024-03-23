@@ -1,12 +1,6 @@
 const Sequelize = require('sequelize');
 const {sequelizeMysql} = require('../configurations/mysqlSequelizecon');
 
-// const sequelizeMysql = new Sequelize('test', 'root', '', {
-//     dialect:'mysql',
-//     host:'localhost',
-//     logging: false, //no logs in console
-// });
-
 const User = sequelizeMysql.define('user', {
     id:{
         type: Sequelize.INTEGER,

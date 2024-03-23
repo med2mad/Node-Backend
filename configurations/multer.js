@@ -1,6 +1,7 @@
 const multer = require('multer');
 const fs = require('fs');
-const d = __dirname+'/../../public/uploads';
+// const d = __dirname+'/../../public/uploads';
+const d = "C:/Users/MED/Desktop/AJAX Paradise/public/uploads/";
 
 const storg = multer.diskStorage({destination: (req,file,callback)=>{ fs.mkdirSync(d, {recursive:true});
                                                                       callback(null, d);
