@@ -3,6 +3,8 @@ const cors = require('cors');
 const multer = require('./multer');
 const { querySanitizer } = require('../configurations/validations');
 const responseTime = require('response-time');
+const dotenv = require('dotenv');
+dotenv.config();
 
 const app = express();
 

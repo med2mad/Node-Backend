@@ -2,8 +2,6 @@ const router = require('express').Router();
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const {User, Op} = require('./model');
-const dotenv = require('dotenv');
-dotenv.config();
 
 //sign up
 router.post('/signup', async (req, res)=>{

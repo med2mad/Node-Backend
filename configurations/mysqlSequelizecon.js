@@ -1,22 +1,15 @@
 const Sequelize = require('sequelize');
 const {app} = require('./expressapp');
 
-// const sequelizeMysql = new Sequelize('test', 'root', '', {
-//     dialect:'mysql',
-//     host:'localhost',
-//     logging: false, //no logs in console
-// });
-
-//freesqldatabase.com
-const sequelizeMysql = new Sequelize('sql8692210', 'sql8692210', '3vbKb8G5nL', {
+const sequelizeMysql = new Sequelize(process.env.mysql_database, process.env.mysql_user, process.env.mysql_password, {
+    host:process.env.mysql_host,
     dialect:'mysql',
-    host:'sql8.freesqldatabase.com',
     logging: false, //no logs in console
 });
 
-sequelizeMysql.authenticate() //test connection before start listening (connection already made without "con")
+sequelizeMysql.authenticate() //test connection made using "new Sequelize" before start listening
 .then(()=>{
-    app.listen(5010, ()=>{console.log("Mysyql: " + 5010);});
+    app.listen(5010, ()=>{console.log("Mysyql " + 5010);});
 })
 .catch((err) => {
     console.log('Mysql ORM initial connextion error: ', err);
