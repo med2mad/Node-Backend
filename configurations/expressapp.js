@@ -8,7 +8,7 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors({origin:'http://localhost:8080', exposedHeaders: '*'}));//cors + access x-response-time header
+app.use(cors({origin:'*', exposedHeaders: '*'}));//cors + access x-response-time header
 app.use(responseTime({suffix:false}));//add x-response-time to response headers
 
 app.use(express.json());
