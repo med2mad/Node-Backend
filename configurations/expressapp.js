@@ -17,6 +17,8 @@ app.post('*', multer, photoParser); app.put('*', multer, photoParser);
 
 app.use(querySanitizer());
 
+app.listen(process.env.PORT, ()=>{console.log("listening on global port");});
+
 module.exports.app = app;
 
 
