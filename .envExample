@@ -1,4 +1,4 @@
-jwt_secret=jwtsecret
+jwt_secret=<jwt_secret>
 
 # cloud.mongodb.com (Atlas)
 mongooseConStr="mongodb+srv://<user>:<pass>@cluster0.7zp3rzt.mongodb.net/?retryWrites=true&w=majority&appName=<Cluster>"
