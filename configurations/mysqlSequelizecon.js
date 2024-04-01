@@ -1,9 +1,16 @@
 const Sequelize = require('sequelize');
 const {app} = require('./expressapp');
 
-const sequelizeMysql = new Sequelize(process.env.mysql_database, process.env.mysql_user, process.env.mysql_password, 
+// const sequelizeMysql = new Sequelize(process.env.mysql_database, process.env.mysql_user, process.env.mysql_password, 
+//     {
+//         host: process.env.mysql_host,
+//         dialect: 'mysql',
+//         logging: false, //no logs in console
+//     }
+// );
+const sequelizeMysql = new Sequelize("test", "root", "", 
     {
-        host: process.env.mysql_host,
+        host: "localhost",
         dialect: 'mysql',
         logging: false, //no logs in console
     }

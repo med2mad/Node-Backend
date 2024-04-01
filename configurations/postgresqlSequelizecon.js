@@ -1,7 +1,9 @@
 const Sequelize = require('sequelize');
 const {app} = require('./expressapp');
 
-const sequelizePostgresql = new Sequelize(process.env.postgresConStr,
+// const sequelizePostgresql = new Sequelize(process.env.postgresConStr,
+// const sequelizePostgresql = new Sequelize("postgres://postgres:5432@localhost/test",
+const sequelizePostgresql = new Sequelize("postgres://vwvnxbct:XNLTn1mvFz6q4vf0IS5c9iXoSALqn68q@surus.db.elephantsql.com/vwvnxbct",
     {logging: false} //no logs on consol
 );
 
