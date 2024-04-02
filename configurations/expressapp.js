@@ -1,5 +1,5 @@
 const express = require('express');
-const cors = require('cors');
+// const cors = require('cors');
 const multer = require('./multer');
 const { querySanitizer } = require('../configurations/validations');
 const responseTime = require('response-time');
@@ -9,7 +9,7 @@ dotenv.config();
 const app = express();
 
 // origin:'http://localhost:8080' 
-app.use(cors({origin:'http://localhost:8080', exposedHeaders:'*'}));//cors + access x-response-time header
+// app.use(cors({origin:'http://localhost:8080', exposedHeaders:'*'}));//cors + access x-response-time header
 
 // let origins = ['http://localhost:5000','http://localhost:5010','http://localhost:5020','http://localhost:5030','http://localhost:8080','*']
 // app.use(function (req, res, next) {
