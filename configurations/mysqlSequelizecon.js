@@ -1,20 +1,20 @@
 const Sequelize = require('sequelize');
 const {app} = require('./expressapp');
 
-// const sequelizeMysql = new Sequelize(process.env.mysql_database, process.env.mysql_user, process.env.mysql_password, 
-//     {
-//         host: process.env.mysql_host,
-//         dialect: 'mysql',
-//         logging: false, //no logs in console
-//     }
-// );
-const sequelizeMysql = new Sequelize("test", "root", "", 
+const sequelizeMysql = new Sequelize('railway', 'root', 'xJwoFJaXRoEPUyydYUeqqtfSfmRFmmcV', 
     {
-        host: "localhost",
+        host: 'monorail.proxy.rlwy.net',
         dialect: 'mysql',
         logging: false, //no logs in console
     }
 );
+// const sequelizeMysql = new Sequelize("test", "root", "", 
+//     {
+//         host: "localhost",
+//         dialect: 'mysql',
+//         logging: false, //no logs in console
+//     }
+// );
 
 sequelizeMysql.authenticate() //test connection made using "new Sequelize" before start listening
 .then(()=>{
