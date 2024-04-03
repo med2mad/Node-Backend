@@ -4,6 +4,7 @@ const {app} = require('./expressapp');
 const sequelizeMysql = new Sequelize('railway', 'root', 'xJwoFJaXRoEPUyydYUeqqtfSfmRFmmcV', 
     {
         host: 'monorail.proxy.rlwy.net',
+        port: 24314,
         dialect: 'mysql',
         logging: false, //no logs in console
     }
