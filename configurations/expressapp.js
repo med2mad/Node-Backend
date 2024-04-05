@@ -18,6 +18,8 @@ app.post('*', multer, photoParser); app.put('*', multer, photoParser);
 
 app.use(querySanitizer());
 
+app.listen(5000, () => {console.log("global port " + 5000);});
+
 module.exports.app = app;
 
 
