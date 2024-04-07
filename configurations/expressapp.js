@@ -2,16 +2,13 @@ const express = require('express');
 const cors = require('cors');
 const multer = require('./multer');
 const { querySanitizer } = require('../configurations/validations');
-const responseTime = require('response-time');
 const dotenv = require('dotenv');
 dotenv.config();
 
 const app = express();
 
 // origin:'http://localhost:8080' 
-app.use(cors({origin:'*', exposedHeaders:'*'}));//cors + access x-response-time header
-
-app.use(responseTime({suffix:false}));//add x-response-time to response headers
+app.use(cors({origin:'*'})); //CORS
 
 app.use(express.json());
 app.post('*', multer, photoParser); app.put('*', multer, photoParser);
