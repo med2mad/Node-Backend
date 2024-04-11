@@ -25,7 +25,7 @@ Models.forEach((Model, index)=>{
 });
 
 
-require('../configurations/mongoconnection'); //mongoose does not need exporting connection object (action hangs until conneciton is estbalished)
+require('../configurations/mongooseconn'); //mongoose does not export connection object (action hangs until conneciton is estbalished)
 
 MoProfile.deleteMany().then(()=>{//clear table
     fs.readdir('others/profilePhotos', (err, files)=>{//get uploaded photo names in array
