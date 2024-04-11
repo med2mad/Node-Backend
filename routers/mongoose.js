@@ -16,9 +16,4 @@ router.put('/:id', mongooseIdValidation(), bodyValidation(), edit);
 //Delete
 router.delete('/:id', mongooseIdValidation(),remove);
 
-//if app starts with index.js
 module.exports = router;
-
-//if app starts with routes>mongoose.js
-const {app} = require('../configurations/expressapp');
-app.use('/mongoose', router);

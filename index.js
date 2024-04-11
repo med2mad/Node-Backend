@@ -1,6 +1,6 @@
-const {app} = require('./configurations/expressapp');
+const {app} = require('./configurations/app');
 
-///////////////////////auth (5010)///////////////////////////
+///////////////////////auth (5010) (mysql.DB->users)///////////////////////////
 const authRouter = require('./auth/router');
 app.use(authRouter);
 

@@ -1,4 +1,4 @@
-const con = require('../../configurations/postgresqlconnection');
+const con = require('../../configurations/postgresqlconn');
 
 module.exports = class Profile {
 

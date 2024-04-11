@@ -1,4 +1,4 @@
-const con = require('../../configurations/mysqlconnection');
+const con = require('../../configurations/mysqlconn');
 
 module.exports = class Profile {
 
