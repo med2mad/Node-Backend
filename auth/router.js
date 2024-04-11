@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const {User, Op} = require('./model');
 
-//sign up
 router.post('/signup', async (req, res)=>{
     //if username already exists
     const user = await User.findOne({ where: {username:req.body.username} });
@@ -19,7 +18,6 @@ router.post('/signup', async (req, res)=>{
     }
 });
 
-//edit
 router.put('/edit', (req, res)=>{
     //if username already exists
     User.findAll({ where: { [Op.and]: [{username:req.body.username},{username:{[Op.ne]:req.body.oldusername}}] } })
@@ -37,7 +35,6 @@ router.put('/edit', (req, res)=>{
     })
 });
 
-//login
 router.post('/login', (req, res)=>{
     User.findAll({ where:{username:req.body.username}, raw: true })
     .then(async (users)=>{
