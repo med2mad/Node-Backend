@@ -1,9 +1,9 @@
-const {Profile, Op, fn, col} = require('../../models/orm/Mysql');
+const {Profile, Op, fn, col} = require('../models/Postgesql');
 
 module.exports.
 getAll = async (req, res)=>{
     const whereClause = {name: {[Op.like]:'%'+req.query._name+'%'}};
-    if (req.query._age) {whereClause.age = req.query._age;}
+    if (req.query._age) {whereClause.age = req.query._age;} 
     
     let count = await Profile.findAll({where:whereClause, attributes: [[fn('count', col('_id')), 'total']]});
 

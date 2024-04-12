@@ -1,19 +1,21 @@
-const mysql = require('mysql2');
-const {app} = require('./app');
+const Sequelize = require('sequelize');
 
-const con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "dbname",
-  port: 3306,
+const sequelizeMysql = new Sequelize("dbname", "root", "", 
+    {
+        host: "localhost",
+        dialect: 'mysql',
+        logging: false, //no logs in console
+    }
+);
+
+sequelizeMysql.authenticate() //test if "new Sequelize()" connected
+.then(()=>{
+    console.log("Mysyql Connected.");
+})
+.catch((err) => {
+    console.error('Mysql ORM connextion error !!');
+    console.log(err);
 });
 
-con.connect((err) => {
-  if (err){console.error("Mysyql initial connection error");}
-  else{
-      app.listen(5010, ()=>{console.log("Mysyql " + 5010);});
-  }
-});
-
-module.exports = con;
+module.exports.sequelizeMysql = sequelizeMysql;
+module.exports.SequelizeClass = Sequelize;

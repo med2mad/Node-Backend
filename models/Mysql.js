@@ -1,4 +1,4 @@
-const {sequelizeMysql, SequelizeClass} = require('../../configurations/mysqlORMconn');
+const {sequelizeMysql, SequelizeClass} = require('../configurations/mysqlconn');
 
 const Profile = sequelizeMysql.define('profile', {
     _id:{

@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const {sequelizeMysql} = require('../configurations/mysqlORMconn');
+const {sequelizeMysql} = require('../configurations/mysqlconn');
 
 const User = sequelizeMysql.define('user', {
     id:{

@@ -1,18 +1,18 @@
 const {app} = require('./configurations/app');
 
-///////////////////////auth (5010) (mysql.DB->users)///////////////////////////
-const authRouter = require('./auth/router');
+///////////////////////auth (mysqlDB->users)///////////////////////////
+const authRouter = require('./routers/user');
 app.use(authRouter);
 
-/////////////////////mysql 5010///////////////////////
+/////////////////////mysql///////////////////////
 const mysqlRouter = require('./routers/mysql');
 app.use('/mysql', mysqlRouter);
 
-///////////////////mongoose 5020//////////////////////
+///////////////////mongoose//////////////////////
 const mongooseRouter = require('./routers/mongoose');
 app.use('/mongoose', mongooseRouter);
 
-//////////////////postgresql 5030/////////////////////
+//////////////////postgresql/////////////////////
 const postgresqlRouter = require('./routers/postgresql');
 app.use('/postgresql', postgresqlRouter);
 

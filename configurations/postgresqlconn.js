@@ -1,14 +1,17 @@
-const {Client}= require('pg');
-const {app} = require('./app');
+const Sequelize = require('sequelize');
 
-const pool = new Client({connectionString : "postgres://postgres:5432@localhost/dbname"});
-// const pool = new Client({connectionString : "postgres://vwvnxbct:XNLTn1mvFz6q4vf0IS5c9iXoSALqn68q@surus.db.elephantsql.com/vwvnxbct"});
+const sequelizePostgresql = new Sequelize("postgres://postgres:5432@localhost/dbname",
+    {logging: false} //no logs on consol
+);
 
-pool.connect().then((err) => {
-  if (err){console.log("PostgreSQL initial connection error");}
-  else{
-    app.listen(5030, ()=>{console.log("PostgreSQL " + 5030);});
-  }
+sequelizePostgresql.authenticate() //test if "new Sequelize()" connected
+.then(()=>{
+    console.log("Postgresql Connected.");
 })
+.catch((err) => {
+    console.error('Postgresql ORM connextion error !!');
+    console.log(err);
+});
 
-module.exports = pool;
+module.exports.sequelizePostgresql = sequelizePostgresql;
+module.exports.SequelizeClass = Sequelize;
