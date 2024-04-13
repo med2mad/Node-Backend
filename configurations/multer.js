@@ -11,13 +11,14 @@ const storg = multer.diskStorage({destination: (req,file,callback)=>{ fs.mkdirSy
                                                                   }
                                 });
 
-const midleware = multer({storage: storg ,
+const midleware = multer({
+                          storage: storg ,
                           limits: {fileSize:1024*1024*10} , //req.file is undifined if 'limits' and 'fileFilter' are not met
                           fileFilter: (req, file, callback)=>{
-                                if(file.mimetype.split("/")[0]!=="image")
-                                  callback("Error: Only Images!", false);
-                                else {return callback(null, true);}
-                              }
+                                        if(file.mimetype.split("/")[0]!=="image")
+                                          callback("Error: Only Images!", false);
+                                        else {return callback(null, true);}
+                                    }
                         });
 
 module.exports = midleware.single("photo"); //the parser midleware

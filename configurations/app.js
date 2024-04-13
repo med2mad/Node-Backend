@@ -15,13 +15,16 @@ app.post('*', multer, photoParser); app.put('*', multer, photoParser);
 
 app.use(querySanitizer());
 
-app.listen(5000, () => {console.log("global port " + 5000);});
+const port = process.env.PORT || 5000;
+app.listen(5000, () => {console.log(`: : : port ${port}`);});
 
 module.exports.app = app;
 
 
 
-function photoParser(req, res, next){//parses the name of the photo in a new variable called "req.PHOTO_PARSED"
+
+
+async function photoParser(req, res, next){//parses the name of the photo in a new variable called "req.PHOTO_PARSED"
     if(req.file){req.PHOTO_PARSED = req.file.filename;}
     else{req.PHOTO_PARSED = req.body.selectedPhotoName;}
     next();
