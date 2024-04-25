@@ -29,5 +29,20 @@ const bodyValidation = function () {
         }
     ];
 }
+const signupValidation = function () {
+    return [
+        body('username').trim().isLength({min:5, max:20}),
+        body('password').trim().isLength({min:5, max:20}),
+        body('password_confirmation').custom((value, { req }) => {
+            if (value !== req.body.password) {
+                throw new Error('Passwords do not match');
+            }
+            return true;
+        }),
+        (req, res, next)=>{
+            if(validationResult(req).isEmpty() ){ next(); }else{ res.send({"errors":validationResult(req).errors}); }
+        }
+    ];
+}
 
-module.exports = { bodyValidation, querySanitizer, idValidation, mongooseIdValidation };
+module.exports = { bodyValidation, signupValidation, querySanitizer, idValidation, mongooseIdValidation };
