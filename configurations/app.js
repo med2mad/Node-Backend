@@ -7,11 +7,12 @@ require('dotenv').config();
 
 const app = express();
 
-app.use(cors({origin:'*'}));//CORS
+app.use(cors({origin:'*'})); //CORS
 
 app.post('/', verifyUser); app.put('/:id', verifyUser); app.delete('/:id', verifyUser);//block unauthorized user actions
 
-app.post('*', multer, photoParser); app.put('*', multer, photoParser);//parse data/photo in req (including signup/login data)
+app.use(express.json()); //parse "application/json" body
+app.use(multer, photoParser); //parse "multipart/form-data" body
 
 app.use(querySanitizer());//sanitize parsed data
 
