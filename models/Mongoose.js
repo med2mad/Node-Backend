@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-// Define the Profile schema
+
 const profileSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -21,5 +21,4 @@ const profileSchema = new mongoose.Schema({
     }
 });
 
-// Create (and export) the Profile model using the schema
 module.exports.Profile = mongoose.model('Profile', profileSchema, 'profiles');

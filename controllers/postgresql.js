@@ -1,11 +1,12 @@
-const {Profile, Op, fn, col} = require('../models/Postgesql');
+const Sequelize = require('sequelize'); //for Op/fn/col
+const {Profile} = require('../models/Postgesql');
 
 module.exports.
 getAll = async (req, res)=>{
-    const whereClause = {name: {[Op.like]:'%'+req.query._name+'%'}};
+    const whereClause = {name: {[Sequelize.Op.like]:'%'+req.query._name+'%'}};
     if (req.query._age) {whereClause.age = req.query._age;} 
     
-    let count = await Profile.findAll({where:whereClause, attributes: [[fn('count', col('_id')), 'total']]});
+    let count = await Profile.findAll({where:whereClause, attributes: [[Sequelize.fn('count', Sequelize.col('_id')), 'total']]});
 
     Profile.findAll({
         where: whereClause,
@@ -43,8 +44,8 @@ remove = (req, res)=>{
     Profile.destroy({where:{_id: req.params.id}})
     .then(()=>{
         const whereClause = {
-            _id: {[Op.lt]: parseInt(req.query.lasttableid)},
-            name: {[Op.like]: '%'+req.query._name+'%'},
+            _id: {[Sequelize.Op.lt]: parseInt(req.query.lasttableid)},
+            name: {[Sequelize.Op.like]: '%'+req.query._name+'%'},
         };
         if (req.query._age) {whereClause.age = req.query._age;}
     

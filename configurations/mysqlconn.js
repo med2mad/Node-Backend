@@ -18,4 +18,3 @@ sequelizeMysql.authenticate() //test if "new Sequelize()" connected
 });
 
 module.exports.sequelizeMysql = sequelizeMysql;
-module.exports.SequelizeClass = Sequelize;
