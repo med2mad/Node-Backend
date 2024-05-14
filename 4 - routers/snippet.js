@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {Snippet} = require('../models/Snippet');
+const {Snippet} = require('../2 - models/Snippet');
 
 //API endpoints
 

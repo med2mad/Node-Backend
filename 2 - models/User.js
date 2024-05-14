@@ -1,26 +1,26 @@
-const Sequelize = require('sequelize');
-const {sequelizeMysql} = require('../configurations/mysqlconn');
+const { DataTypes } = require('sequelize');
+const { sequelizeMysql } = require('../1 - configurations/mysqlconn');
 
 const User = sequelizeMysql.define('user', {
     id:{
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
     },
     username:{
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         validate:{ len:{args:[5,10], msg:"name from 5 to 20 chars !"} },
         allowNull: false,
         unique: true,
     },
     userphoto:{
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         defaultValue: '',
         allowNull: false,
     },
     hash:{
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
     },
 },
@@ -31,4 +31,3 @@ const User = sequelizeMysql.define('user', {
 );
 
 module.exports.User = User;
-module.exports.Op = Sequelize.Op;

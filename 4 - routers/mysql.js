@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const { bodyValidation, idValidation } = require('../configurations/validations');
+const { bodyValidation, idValidation } = require('../1 - configurations/validations');
 
 //controller functions
-const {getAll, add, edit, remove} = require('../controllers/postgresql');
+const {getAll, add, edit, remove} = require('../3 - controllers/mysql');
 
 //API endpoints
 //Get

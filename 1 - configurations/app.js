@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const multer = require('./multer');
-const { querySanitizer } = require('../configurations/validations');
+const { querySanitizer } = require('../1 - configurations/validations');
 require('dotenv').config();
 
 const app = express();

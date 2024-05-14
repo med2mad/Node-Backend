@@ -1,23 +1,23 @@
-const {app} = require('./configurations/app');
+const {app} = require('./1 - configurations/app');
 
 //////////////////auth (mysqlDB->users)//////////////////
-const authRouter = require('./routers/user');
+const authRouter = require('./4 - routers/user');
 app.use(authRouter);
 
 ////////////////snippets (mysqlDB->snippets)////////////////
-const snippetRouter = require('./routers/snippet');
+const snippetRouter = require('./4 - routers/snippet');
 app.use(snippetRouter);
 
 //////////////////////////mysql//////////////////////////
-const mysqlRouter = require('./routers/mysql');
+const mysqlRouter = require('./4 - routers/mysql');
 app.use('/mysql', mysqlRouter);
 
 /////////////////////////mongoose/////////////////////////
-// const mongooseRouter = require('./routers/mongoose');
+// const mongooseRouter = require('./4 - routers/mongoose');
 // app.use('/mongoose', mongooseRouter);
 
 ////////////////////////postgresql////////////////////////
-const postgresqlRouter = require('./routers/postgresql');
+const postgresqlRouter = require('./4 - routers/postgresql');
 app.use('/postgresql', postgresqlRouter);
 
 //////////////////////////404/////////////////////////////

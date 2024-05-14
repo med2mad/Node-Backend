@@ -1,25 +1,25 @@
-const Sequelize = require('sequelize');
-const {sequelizeMysql} = require('../configurations/mysqlconn');
+const { DataTypes } = require('sequelize');
+const { sequelizeMysql } = require('../1 - configurations/mysqlconn');
 
 const Profile = sequelizeMysql.define('profile', {
     _id:{
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
     },
     name:{
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         validate:{ len:{args:[1,30], msg:"name from 1 to 30 chars !"} },
         allowNull: false,
     },
     age:{
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         validate:{ min:{args:18, msg:"under aged !"}, max:{args:99, msg:"over aged !"} },
         allowNull: false,
     },
     photo:{
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         defaultValue: '',
         allowNull: false,
     },
