@@ -35,7 +35,7 @@ edit = (req, res)=>{
         row.photo=req.PHOTO_PARSED;
 
         row.save().then(()=>{
-            res.json({"photo":req.PHOTO_PARSED})
+            res.json({"editedId":req.params.id, "photo":req.PHOTO_PARSED})
         });
     });
 };
@@ -49,7 +49,7 @@ remove = (req, res)=>{
         if (req.query._age) {q.age = req.query._age;}
         
         Profile.find(q).sort({"_id":-1}).select("-__v -timestamp").limit(1).then((data)=>{
-            res.json(data);
+            res.json({"deletedId":req.params.id, "rows":data});
         });
     });
 };

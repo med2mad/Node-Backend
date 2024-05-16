@@ -35,7 +35,7 @@ edit = (req, res)=>{
 
     Profile.update({"name":req.body.name, "age":req.body.age, "photo":photo}, {where:{_id: req.params.id}})
     .then(()=>{
-        res.json({"photo":photo});
+        res.json({"editedId":req.params.id, "photo":photo});
     });
 };
 

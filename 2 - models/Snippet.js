@@ -1,18 +1,26 @@
 const { DataTypes } = require('sequelize');
-const {sequelizeMysql} = require('../1 - configurations/mysqlconn');
+const { sequelizeMysql } = require('../1 - configurations/mysqlconn');
 
 const Snippet = sequelizeMysql.define('snippet', {
-    _id: DataTypes.INTEGER,
+    _id: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+    },
 
     back: DataTypes.STRING,
 
     ajax: DataTypes.STRING,
 
-    method: DataTypes.STRING,
+    action: DataTypes.STRING,
+
+    db: DataTypes.STRING,
 
     time: DataTypes.INTEGER,
 
-    username: DataTypes.STRING,
+    username: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
 
     uri: DataTypes.STRING,
 

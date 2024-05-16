@@ -4,7 +4,7 @@ const sequelizeMysql = new Sequelize("dbname", "root", "",
     {
         host: "localhost",
         dialect: 'mysql',
-        logging: false, //no logs in console
+        // logging: false, //no logs in console
     }
 );
 

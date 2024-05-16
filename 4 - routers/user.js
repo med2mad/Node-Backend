@@ -5,7 +5,7 @@ const { signupValidation } = require('../1 - configurations/validations');
 const {signup, login, edit} = require('../3 - controllers/user');
 
 //API endpoints
-//insert
+//insert new
 router.post('/signup', signupValidation(), signup);
 //update
 router.put('/edit', signupValidation(), edit);
