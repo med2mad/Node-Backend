@@ -6,7 +6,7 @@ app.use(authRouter);
 
 ////////////////snippets (mysqlDB->snippets)////////////////
 const snippetRouter = require('./4 - routers/snippet');
-app.use(snippetRouter);
+app.use('/snippet', snippetRouter);
 
 //////////////////////////mysql//////////////////////////
 const mysqlRouter = require('./4 - routers/mysql');
