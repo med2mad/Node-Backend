@@ -17,7 +17,7 @@ app.use(multer, photoParser); //parse "multipart/form-data" body
 app.use(querySanitizer());//sanitize parsed data
 
 const port = process.env.PORT || 5000;
-app.listen(5000, () => {console.log(`: : : port ${port}`);});
+app.listen(port, () => {console.log(`: : : port ${port}`);});
 
 module.exports.app = app;
 
