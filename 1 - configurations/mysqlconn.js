@@ -17,4 +17,4 @@ sequelizeMysql.authenticate() //test if "new Sequelize()" connected
     console.log(err);
 });
 
-module.exports.sequelizeMysql = sequelizeMysql;
+module.exports = sequelizeMysql;

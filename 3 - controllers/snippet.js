@@ -1,4 +1,4 @@
-const {Snippet} = require('../2 - models/Snippet');
+const Snippet = require('../2 - models/Snippet');
 
 module.exports.
 getAll = (req,res)=>{

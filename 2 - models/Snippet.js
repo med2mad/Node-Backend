@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const { sequelizeMysql } = require('../1 - configurations/mysqlconn');
+const sequelizeMysql = require('../1 - configurations/mysqlconn');
 
 const Snippet = sequelizeMysql.define('snippet', {
     _id: {
@@ -34,4 +34,4 @@ const Snippet = sequelizeMysql.define('snippet', {
 },
 );
 
-module.exports.Snippet = Snippet;
+module.exports = Snippet;

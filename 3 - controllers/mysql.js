@@ -1,5 +1,5 @@
 const {Op,fn,col} = require('sequelize');
-const {Profile} = require('../2 - models/Mysql');
+const Profile = require('../2 - models/Mysql');
 
 module.exports.
 getAll = async (req, res)=>{

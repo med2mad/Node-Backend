@@ -13,4 +13,4 @@ sequelizePostgresql.authenticate() //test if "new Sequelize()" connected
     console.log(err);
 });
 
-module.exports.sequelizePostgresql = sequelizePostgresql;
+module.exports = sequelizePostgresql;

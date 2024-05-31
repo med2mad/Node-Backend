@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const { sequelizeMysql } = require('../1 - configurations/mysqlconn');
+const sequelizeMysql = require('../1 - configurations/mysqlconn');
 
 const User = sequelizeMysql.define('user', {
     id:{
@@ -30,4 +30,4 @@ const User = sequelizeMysql.define('user', {
 }
 );
 
-module.exports.User = User;
+module.exports = User;

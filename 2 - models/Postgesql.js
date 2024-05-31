@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const { sequelizePostgresql } = require('../1 - configurations/postgresqlconn');
+const sequelizePostgresql = require('../1 - configurations/postgresqlconn');
 
 const Profile = sequelizePostgresql.define('profile', {
     _id:{
@@ -30,4 +30,4 @@ const Profile = sequelizePostgresql.define('profile', {
 },
 );
 
-module.exports.Profile = Profile;
+module.exports = Profile;
