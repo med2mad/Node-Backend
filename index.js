@@ -1,4 +1,4 @@
-const {app} = require('./1 - configurations/app');
+const app = require('./1 - configurations/app');
 
 //////////////////auth (mysqlDB->users)//////////////////
 const authRouter = require('./4 - routers/user');

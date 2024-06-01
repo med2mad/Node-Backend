@@ -1,5 +1,5 @@
 const {Op,fn,col} = require('sequelize');
-const Profile = require('../2 - models/Postgesql');
+const Profile = require('../2 - models/Postgres');
 
 module.exports.
 getAll = async (req, res)=>{
