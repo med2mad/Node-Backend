@@ -6,16 +6,14 @@ getAll = async (req, res)=>{
     const whereClause = {name: {[Op.like]:'%'+req.query._name+'%'}};
     if (req.query._age) {whereClause.age = req.query._age;}
     
-    let count = await Profile.findAll({where:whereClause, attributes: [[fn('count', col('_id')), 'total']]});
-
-    Profile.findAll({
+    Profile.findAndCountAll({
         where: whereClause,
         limit: parseInt(req.query._limit),
         offset:parseInt(req.query._skip),
         order: [['_id', 'DESC']],
     })
     .then((data)=>{
-        res.json({"rows":data, "total":count[0].toJSON().total});
+        res.json({"rows":data.rows, "total":data.count});
     });
 };
 
