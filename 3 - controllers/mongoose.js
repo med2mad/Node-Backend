@@ -2,7 +2,7 @@ const Profile = require('../2 - models/Mongoose');
 require('../1 - configurations/mongooseconn'); //mongoose does not need exporting connection object
 
 module.exports.
-getAll = async (req, res)=>{
+get = async (req, res)=>{
     const q = {name:{ $regex: '.*' + escapeRegExp(req.query._name) + '.*' }};
 
     const count = await Profile.find(q).countDocuments().exec();
@@ -17,7 +17,7 @@ getAll = async (req, res)=>{
 };
 
 module.exports.
-add = (req, res)=>{
+post = (req, res)=>{
     const photo = req.PHOTO_PARSED; //by the time save() finishes there will be no more "req.body"
     req.body.photo = req.PHOTO_PARSED;
 
@@ -28,7 +28,7 @@ add = (req, res)=>{
 };
 
 module.exports.
-edit = (req, res)=>{
+put = (req, res)=>{
     Profile.findById(req.params.id).then((row)=>{
         row.name=req.body.name;
         row.age=req.body.age;

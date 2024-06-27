@@ -7,9 +7,9 @@ router.use(mongoSanitize());
 const {getAll, add, edit, remove} = require('../3 - controllers/mongoose');
 
 //API endpoints
-router.get('/', getAll);
-router.post('/', bodyValidation(), add);
-router.put('/:id', mongooseIdValidation(), bodyValidation(), edit);
+router.get('/', get);
+router.post('/', bodyValidation(), post);
+router.put('/:id', mongooseIdValidation(), bodyValidation(), put);
 router.delete('/:id', mongooseIdValidation(),remove);
 
 module.exports = router;
