@@ -5,9 +5,9 @@ const { bodyValidation, idValidation } = require('../1 - configurations/validati
 const {getAll, add, edit, remove} = require('../3 - controllers/postgresql');
 
 //API endpoints
-router.get('/', getAll);
-router.post('/', bodyValidation(), add);
-router.put('/:id', idValidation(), bodyValidation(), edit);
+router.get('/', get);
+router.post('/', bodyValidation(), post);
+router.put('/:id', idValidation(), bodyValidation(), put);
 router.delete('/:id', idValidation(), remove);
 
 module.exports = router;
