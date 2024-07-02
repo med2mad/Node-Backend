@@ -2,7 +2,7 @@ const {Op,fn,col} = require('sequelize');
 const Profile = require('../2 - models/Postgres');
 
 module.exports.
-getAll = async (req, res)=>{
+get = async (req, res)=>{
     const whereClause = {name: {[Op.like]:'%'+req.query._name+'%'}};
     if (req.query._age) {whereClause.age = req.query._age;} 
     
@@ -20,7 +20,7 @@ getAll = async (req, res)=>{
 };
 
 module.exports.
-add = (req, res)=>{
+post = (req, res)=>{
     const photo = req.PHOTO_PARSED;
 
     Profile.create({"name":req.body.name, "age":req.body.age, "photo":photo})
@@ -30,7 +30,7 @@ add = (req, res)=>{
 };
 
 module.exports.
-edit = (req, res)=>{
+put = (req, res)=>{
     const photo = req.PHOTO_PARSED;
 
     Profile.update({"name":req.body.name, "age":req.body.age, "photo":photo}, {where:{_id: req.params.id}})
