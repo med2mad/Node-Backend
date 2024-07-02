@@ -1,10 +1,10 @@
 const router = require('express').Router();
 
 //controller functions
-const {getAll, add} = require('../3 - controllers/snippet');
+const {get, post} = require('../3 - controllers/snippet');
 
 //API endpoints
-router.get('/', getAll);
-router.post('/', add);
+router.get('/', get);
+router.post('/', post);
 
 module.exports = router;
