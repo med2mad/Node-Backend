@@ -13,8 +13,8 @@ const mysqlRouter = require('./4 - routers/mysql');
 app.use('/mysql', mysqlRouter);
 
 /////////////////////////mongoose/////////////////////////
-// const mongooseRouter = require('./4 - routers/mongoose');
-// app.use('/mongoose', mongooseRouter);
+const mongooseRouter = require('./4 - routers/mongoose');
+app.use('/mongoose', mongooseRouter);
 
 ////////////////////////postgresql////////////////////////
 const postgresqlRouter = require('./4 - routers/postgresql');
