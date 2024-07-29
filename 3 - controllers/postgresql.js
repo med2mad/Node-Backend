@@ -15,7 +15,7 @@ get = async (req, res)=>{
         order: [['_id', 'DESC']],
     })
     .then((data)=>{
-        res.json({"rows":data.rows, "total":data.count});
+        res.json({"rows":data, "total":count});
     });
 };
 
