@@ -9,10 +9,10 @@ const app = express();
 
 app.use(cors({origin:'*'})); //CORS
 
-app.post('/', verifyUser); app.put('/:id', verifyUser); app.delete('/:id', verifyUser);//block unauthorized user actions
-
 app.use(express.json()); //parse "application/json" body
 app.use(multer, photoParser); //parse "multipart/form-data" body
+
+app.use(verifyUser); //block unauthorized user actions
 
 app.use(querySanitizer());//sanitize parsed data
 
@@ -32,8 +32,12 @@ async function photoParser(req, res, next){//parses the name of the photo in a v
 }
 
 function verifyUser(req, res, next) {
-    jwt.verify(req.body.token, process.env.jwt_secret, (err, decoded)=>{
-        if (err) { res.status(401).send('Action fail (Not Authorized !!)'); }
-        else { next() }  
-    })
+    if(req.method=='GET' || req.method=='DELETE' || req.url.indexOf('signup')!=-1 || req.url.indexOf('login')!=-1)
+    { next(); }
+    else{
+        jwt.verify(req.body.token, process.env.jwt_secret, (err, decoded)=>{
+            if (err) { res.status(401).send('Action fail (Not Authorized !!)'); }
+            else { next() }  
+        })
+    } 
 }
