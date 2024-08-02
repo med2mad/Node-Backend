@@ -2,14 +2,17 @@ const {Op} = require('sequelize');
 const Profile = require('../2 - models/Mysql');
 
 module.exports.
-get = async (req, res)=>{
-    const whereClause = {name: {[Op.like]:'%'+req.query._name+'%'}};
-    if (req.query._age) {whereClause.age = req.query._age;}
-    
+get = (req, res)=>{
+    let whereClause = {};
+    if (req.query.name) {whereClause.name = {[Op.like]:'%'+req.query.name+'%'};}
+    if (req.query.age) {whereClause.age = req.query.age;}
+    const limit = (req.query.limit?req.query.limit:0);
+    const offset = (req.query.page?(req.query.page-1)*limit:0);
+
     Profile.findAndCountAll({
         where: whereClause,
-        limit: parseInt(req.query._limit),
-        offset:parseInt(req.query._skip),
+        limit: parseInt(limit),
+        offset:parseInt(offset),
         order: [['_id', 'DESC']],
     })
     .then((data)=>{
@@ -43,9 +46,9 @@ remove = (req, res)=>{
     .then(()=>{
         const whereClause = {
             _id: {[Op.lt]: parseInt(req.query.lasttableid)},
-            name: {[Op.like]: '%'+req.query._name+'%'},
+            name: {[Op.like]: '%'+req.query.name+'%'},
         };
-        if (req.query._age) {whereClause.age = req.query._age;}
+        if (req.query.age) {whereClause.age = req.query.age;}
     
         Profile.findAll({
             where: whereClause,

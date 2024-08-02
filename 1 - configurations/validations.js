@@ -1,7 +1,7 @@
 const { body, query, param, validationResult } = require('express-validator');
 
 const querySanitizer = function () {
-    return [query('_name').trim().default(''), query('_age').default(undefined), query('selectedPhotoName').trim().default(''), query('_skip').default(undefined), query('_limit').default(undefined)];
+    return [query('name').trim().default(''), query('age').default(undefined), query('selectedPhotoName').trim().default(''), query('page').default(undefined), query('limit').default(undefined)];
 }
 
 const idValidation = function () {

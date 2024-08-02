@@ -3,14 +3,14 @@ require('../1 - configurations/mongooseconn'); //mongoose does not need exportin
 
 module.exports.
 get = async (req, res)=>{
-    const q = {name:{ $regex: '.*' + escapeRegExp(req.query._name) + '.*' }};
+    const q = {name:{ $regex: '.*' + escapeRegExp(req.query.name) + '.*' }};
 
     const count = await Profile.find(q).countDocuments().exec();
 
-    if(req.query._limit==0){res.json({"rows":[],"count":count});}
+    if(req.query.limit==0){res.json({"rows":[],"count":count});}
     else{
-        if (req.query._age) {q.age = req.query._age;}
-        Profile.find(q).sort({_id:-1}).select("-__v -timestamp").skip(req.query._skip).limit(req.query._limit).then((data)=>{
+        if (req.query.age) {q.age = req.query.age;}
+        Profile.find(q).sort({_id:-1}).select("-__v -timestamp").skip((req.query.page-1)*req.query.limit).limit(req.query.limit).then((data)=>{
             res.json({"rows":data,"total":count});
         });
     }
@@ -45,8 +45,8 @@ remove = (req, res)=>{
     Profile.findOneAndDelete({"_id":req.params.id}).then(()=>{
         //GET replacement row
         const q = {_id: {$lt: req.query.lasttableid}};
-        q.name = {$regex: '.*' + req.query._name + '.*'};
-        if (req.query._age) {q.age = req.query._age;}
+        q.name = {$regex: '.*' + req.query.name + '.*'};
+        if (req.query.age) {q.age = req.query.age;}
         
         Profile.find(q).sort({"_id":-1}).select("-__v -timestamp").limit(1).then((data)=>{
             res.json({"deletedId":req.params.id, "rows":data});
