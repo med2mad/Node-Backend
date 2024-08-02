@@ -54,7 +54,7 @@ remove = (req, res)=>{
             order: [['_id', 'DESC']],
         })
         .then((entries)=>{
-            res.json(entries);
+            res.json({"rows":entries});
         });
     });
 };
