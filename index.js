@@ -10,15 +10,15 @@ app.use('/snippet', snippetRouter);
 
 //////////////////////////mysql//////////////////////////
 const mysqlRouter = require('./4 - routers/mysql');
-app.use('/mysql', mysqlRouter);
+app.use('/Mysql', mysqlRouter);
 
 /////////////////////////mongoose/////////////////////////
-const mongooseRouter = require('./4 - routers/mongoose');
-app.use('/mongoose', mongooseRouter);
+const mongooseRouter = require('./4 - routers/mongoodb');
+app.use('/Mongoodb', mongooseRouter);
 
 ////////////////////////postgresql////////////////////////
 const postgresqlRouter = require('./4 - routers/postgresql');
-app.use('/postgresql', postgresqlRouter);
+app.use('/Postgresql', postgresqlRouter);
 
 //////////////////////////404/////////////////////////////
 app.use((req, res)=>{
