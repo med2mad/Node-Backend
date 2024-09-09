@@ -4,7 +4,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 router.use(mongoSanitize());
 
 //controller functions
-const {get, post, put, remove} = require('../3 - controllers/mongoose');
+const {get, post, put, remove} = require('../3 - controllers/mongodb');
 
 //API endpoints
 router.get('/', get);

@@ -1,5 +1,5 @@
-const Profile = require('../2 - models/Mongoose');
-require('../1 - configurations/mongooseconn'); //mongoose does not need exporting connection object
+const Profile = require('../2 - models/Mongodb');
+require('../1 - configurations/conMongodb'); //mongoose does not need exporting connection object
 
 module.exports.
 get = async (req, res)=>{
