@@ -4,10 +4,6 @@ const app = require('./1 - configurations/app');
 const authRouter = require('./4 - routers/user');
 app.use(authRouter);
 
-////////////////snippets (mysqlDB->snippets)////////////////
-const snippetRouter = require('./4 - routers/snippet');
-app.use('/snippet', snippetRouter);
-
 //////////////////////////mysql//////////////////////////
 const mysqlRouter = require('./4 - routers/mysql');
 app.use('/Mysql', mysqlRouter);
@@ -24,3 +20,9 @@ app.use('/Postgresql', postgresqlRouter);
 app.use((req, res)=>{
     res.status(404).json("404 , no routes !!");
 });
+
+
+//////////////////////////Canceled//////////////////////////
+////////////////snippets (mysqlDB->snippets)////////////////
+// const snippetRouter = require('./4 - routers/snippet');
+// app.use('/snippet', snippetRouter);
