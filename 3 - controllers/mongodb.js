@@ -3,7 +3,7 @@ require('../1 - configurations/conMongodb'); //mongoose does not need exporting 
 
 module.exports.
 get = async (req, res)=>{
-    const q = {name:{ $regex: '.*' + escapeRegExp(req.query.name) + '.*' }};
+    const q = {name:{ $regex: escapeRegExp(req.query.name) }};
 
     const count = await Profile.find(q).countDocuments().exec();
 

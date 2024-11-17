@@ -1,7 +1,11 @@
 const User = require('../2 - models/User');
-const {Op} = require('sequelize');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const {Op} = require('sequelize');
+
+/////////mocking requires///////
+const sequelizeMysql = require('../1 - configurations/conMysql');
+const sequelizePostgres = require('../1 - configurations/conPostgres');
 
 module.exports.
 signup = async (req, res)=>{
@@ -12,7 +16,11 @@ signup = async (req, res)=>{
     else{
         const hash = await bcrypt.hash(req.body.password, 10);
         User.create({"username":req.body.username, "hash":hash, "userphoto":(req.PHOTO_PARSED)?req.PHOTO_PARSED:'profile.jpg'})
-        .then((user)=>{
+        .then(async (user)=>{
+            await sequelizeMysql.query("CREATE TABLE profiles_"+req.body.username+" LIKE profiles;")
+            await sequelizeMysql.query("INSERT INTO profiles_"+req.body.username+" SELECT * FROM profiles;")
+            await sequelizePostgres.query("CREATE TABLE profiles_"+req.body.username+" (LIKE profiles INCLUDING ALL);")
+            await sequelizePostgres.query("INSERT INTO profiles_"+req.body.username+" SELECT * FROM profiles;")
             const token = jwt.sign({"id":user.id}, process.env.jwt_secret);
             res.send({"username":req.body.username, "userphoto":(req.PHOTO_PARSED)?req.PHOTO_PARSED:'profile.jpg', "token":token});
         });
@@ -51,4 +59,17 @@ login = (req, res)=>{
         }
         else{ res.send(false); }
     });
+};
+
+module.exports.
+mock = async(req, res)=>{
+    await sequelizeMysql.query("DROP TABLE IF EXISTS profiles_"+req.query.username+";")
+    await sequelizeMysql.query("CREATE TABLE profiles_"+req.query.username+" LIKE profiles;")
+    await sequelizeMysql.query("INSERT INTO profiles_"+req.query.username+" SELECT * FROM profiles;")
+    
+    await sequelizePostgres.query("DROP TABLE IF EXISTS profiles_"+req.query.username+";")
+    await sequelizePostgres.query("CREATE TABLE profiles_"+req.query.username+" (LIKE profiles INCLUDING ALL);")
+    await sequelizePostgres.query("INSERT INTO profiles_"+req.query.username+" SELECT * FROM profiles;")
+
+    res.json({"message":'tables mocked'})
 };

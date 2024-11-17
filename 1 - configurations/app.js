@@ -12,6 +12,15 @@ app.use(cors({origin:'*'})); //CORS
 app.use(express.json()); //parse "application/json" body
 app.use(multer, photoParser); //parse "multipart/form-data" body
 
+/////////change tables names///////
+let MysqlModel = require('../2 - models/Mysql');
+let PostgresModel = require('../2 - models/Postgres');
+app.get('/table_name', (req, res)=>{
+    MysqlModel.tableName = req.query.table_name;
+    PostgresModel.tableName = req.query.table_name;
+    res.json({"message":'tables mocked'})
+});
+
 app.use(verifyUser); //block unauthorized user actions
 
 app.use(querySanitizer());//sanitize parsed data

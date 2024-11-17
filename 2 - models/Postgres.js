@@ -25,6 +25,7 @@ const Profile = sequelizePostgresql.define('profile', {
     },
 },
 {
+    tableName: '',
     createdAt:false,
     updatedAt:false
 },

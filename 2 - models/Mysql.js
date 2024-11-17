@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelizeMysql = require('../1 - configurations/conMysql');
 
-const Profile = sequelizeMysql.define('profile', {
+const Model = sequelizeMysql.define('profile', {
     _id:{
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -30,4 +30,4 @@ const Profile = sequelizeMysql.define('profile', {
 },
 );
 
-module.exports = Profile;
+module.exports = Model;
