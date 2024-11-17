@@ -1,0 +1,19 @@
+{
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#c7faba", //selected activityBar
+        "activityBar.background": "#1bee37", //activityBar
+        "activityBar.foreground": "#15202b", //activityBar active icones
+        "activityBar.inactiveForeground": "#15202b99", //activityBar icones
+        "activityBarBadge.background": "#ec2fc3",
+        "titleBar.activeForeground": "#ffffff", //titleBar text
+    },
+    "files.exclude": {
+        ".env": true,
+        // ".gitignore": true,
+        "**/cmds": true,
+        "**/rejected": true,
+        "DBexports": true,
+        // "node_modules": true,
+        // "package-lock.json": true,
+    },
+}
